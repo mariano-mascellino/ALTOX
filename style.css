@@ -1,107 +1,157 @@
-body {
-  padding-top: 10px;
-  background-color: #645E8C
+
+body
+{
+	padding-top: 10px;
+	/*background-color: #3350A6;*/
+    background-color: #F2F2F2;
+    background: linear-gradient(135deg, #3350A655 25%, transparent 25%) -4px 0/ 8px 8px, linear-gradient(225deg, #3350A6 25%, transparent 25%) -4px 0/ 8px 8px, linear-gradient(315deg, #3350A655 25%, transparent 25%) 0px 0/ 8px 8px, linear-gradient(45deg, #3350A6 25%, #F2F2F2 25%) 0px 0/ 8px 8px;
 }
 
-.patient, .blocproduits, .blocmelanges, .bloctoxcum, .paramexplications, .paramfragile, .paramproduit
+#patient, .blocproduits, .blocmelanges, .bloctoxcum, .paramexplications, .paramfragile, .paramproduit
 {
-  background-color: #DFE2F2;
-  line-height: 40px;
-  text-align: center;
-  font-family : "Lato";
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
-
+    background-color: #F2F2F2;
+	line-height: 40px;
+	text-align: center;
+	font-family : "Lato";
+	border-top: 2px solid white;
+	border-bottom: 2px solid white;
+    color :  #010D26;
 }
 
 #poids, #volume1, #volume2
 {
-    background-color: white;
-    border-right: 0px;
+	background-color: white;
+	border-right: 0px;
+}
+
+#poids
+{
+	width: 60px;
+}
+
+#Posologie1, #Posologie2, #VolumeMax1, #VolumeMax2, #blocMelangeVolumesEgaux p
+{
+	margin-top : 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+#blocMelangeVolumesEgaux p
+{
+	margin-top: 8px;
+	margin-bottom: 8px;
 }
 
 select
 {
-    /*background-color: #DFE2F2;*/
-    border : none;
-    border-radius: none;
+	/*background-color: #DFE2F2;
+	*/
+	border : none;
+	border-radius: none;
 }
 
 .dosetoxique
 {
-    color : darkred;
+	color : darkred;
 }
 
 .dosenontoxique
 {
-    color : #275954;
+	color : #275954;
 }
 
 #ResultatTotal
 {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .infos
 {
-  background-color: #CED3F2;
-  text-align: center;
-  line-height: 20px;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
+	background-color: #F2F2F2;
+	text-align: center;
+	line-height: 20px;
+	border-top: 2px solid white;
+	border-bottom: 2px solid white;
 }
 
 h1
 {
-  background-color: #CED3F2;
-  line-height: 40px;
-  text-align: center;
-  color : #275954;
-  font-family : "Francois One";
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
+	background-color: #F2F2F2;
+	line-height: 40px;
+	text-align: center;
+	color : #0554F2;
+	font-family : "arial";
+	margin-top : 0;
+	margin-bottom : 0;
+	border-top: 2px solid white;
+	border-bottom: 2px solid white;
 }
+
 h2
 {
-  background-color: #CED3F2;
-  line-height: 30px;
-  text-align: center;
-  color : #012623;
-  font-family : "Lato";
-  font-size: small;
-font-style: italic;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
+	background-color: #F2F2F2;
+	line-height: 30px;
+	text-align: center;
+	color : #012623;
+	font-family : "Arial";
+	font-size: small;
+	font-style: italic;
+	border-top: 2px solid white;
+	border-bottom: 2px solid white;
 }
+
 h3
 {
-    font-family : "Lato";
-    font-variant-caps:all-petite-caps;
-    border-bottom: 1px dashed #9799A6;
-    /*margin-bottom: 10px;*/
+	font-family : "Lato";
+	font-variant-caps:all-petite-caps;
+	border-bottom: 1px dashed #9799A6;
+	margin-top: 0px;
+	margin-bottom: 0px;
+    color : #1675F2;
 }
+
 h4
 {
-    font-family : "Lato";
-    font-variant-caps:all-small-caps;
-    /*margin-bottom: 10px;*/
+	font-family : "Lato";
+	font-variant-caps:all-small-caps;
+
 }
+
 .resultat, .modifie
 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #275954;
-    line-height: 30px
-}
+	font-size: 20px;
+	font-weight: bold;
+	color : #0554F2;
+    line-height: 30px}
+
 h6
 {
-    font-weight: bold;
-    color: #275954;
+	font-weight: bold;
+	color: #010D26;
+	margin-top: 8px;
+	margin-bottom: 0px;
+	font-size: 1em;
+	line-height: 30px;
 }
+
+#ResultatPartiel1, #ResultatPartiel2, #ResultatTotal
+{
+	margin-top:0px;
+	margin-bottom:16px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
 p
 {
-    line-height: 1em;
-    color : #012623;
+	line-height: 1em;
+	color : #012623;
+}
+
+a
+{
+    text-decoration: none;
+    color : #0554F2;
 }
 
 .preentete
@@ -109,81 +159,143 @@ p
     background-color: white
 }
 
-.alternatif
-{
-    display : none;
-}
-
-@media(min-width : 992px){
-    .container
-    {
-        display : none;
-    }
-    
-    .alternatif
-    {
-        display : block;
-    }
-    /*
-    .interligne
-    {
-        display: none;
-    }
-    h1
-    {
-      background-color: #D9933D;
-      border: 2px solid black;
-      border-radius: 6px;
-      line-height: 40px;
-      text-align: center;
-      color : 424A59;
-      font-family : "bitter";
-    }
-    h2
-{
-  background-color: #D9933D;
-  line-height: 40px;
-  text-align: center;
-  color : 424A59;
-  font-family : "bitter";
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-}
-    .patient, .blocproduits, .blocmelanges, .bloctoxcum
-    {
-      background-color: #5D9EA6;
-    ;
-      border: 2px solid black;
-      border-radius: 6px;
-      line-height: 40px;
-      text-align: center;
-      font-family : "raleway";
-      margin: 3px;
-    }
-    .infos
-    {
-      background-color: whitesmoke;
-      border: 2px solid black;
-      border-radius: 6px;
-      line-height: 40px;
-      text-align: center;
-    }
-    */
-}
 footer p
 {
-    margin : 10px
-}
+margin : 10px}
 
 input
 {
-    color:blue;
+	color:blue;
 }
+
 .disclaimer
 {
-    line-height: 1em;
-    font-style: italic;
+	line-height: 1em;
+	font-style: italic;
 }
+
+/*smartphone*/
+@media(max-width : 639px)
+{
+	body
+	{
+		margin-left : 0;
+		margin-right : 0;
+		margin-top : 0;
+		border-top : none;
+		padding-top : 0;
+	}
+
+	#banniere
+	{
+		height: auto;
+	}
+
+	h1
+	{
+		width: 100%;
+		font-size: 1.2em;
+	}
+
+	h2
+	{
+		margin-top : 0px;
+		margin-bottom : 0;
+		border-top : 0;
+		font-size: 0.8em;
+	}
+
+	#patient
+	{
+		border-top : 0px;
+	}
+
+	#poids
+	{
+		width: 60px;
+	}
+}
+
+/*tablettes*/
+@media(min-width : 640px) AND (max-width : 1079px)
+{
+	body
+	{
+		width: 90%;
+		margin-left: auto;
+		margin-right : auto;
+	}
+
+	#corps
+	{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	#patient
+	{
+		width : 30%;
+		margin-bottom: 8px;
+	}
+
+	.blocproduits
+	{
+		width: 35%;
+		margin-bottom: 8px;
+	}
+
+	.blocmelanges
+	{
+		width: 47.5%;
+		margin-bottom: 8px;
+	}
+}
+
+/*PC*/
+@media(min-width : 1080px)
+{
+	body
+	{
+		width: 900px;
+		margin-left: auto;
+		margin-right : auto;
+	}
+
+	#corps
+	{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	#patient
+	{
+		width : 30%;
+		margin-bottom: 8px;
+	}
+
+	.blocproduits
+	{
+		width: 30%;
+		margin-bottom: 8px;
+	}
+
+	.blocmelanges
+	{
+		width: 47.5%;
+		margin-bottom: 8px;
+	}
+}
+
+/* Color Theme Swatches in Hex */
+.UI/UX-1-hex { color: #3350A6; }
+.UI/UX-2-hex { color: #0554F2; }
+.UI/UX-3-hex { color: #010D26; }
+.UI/UX-4-hex { color: #1675F2; }
+.UI/UX-5-hex { color: #F2F2F2; }
+
+
 /* Color Theme Swatches in Hex */
 .RED-theme-from-PANTONE-(Portfolio)-1-hex { color: #D50058; }
 .RED-theme-from-PANTONE-(Portfolio)-2-hex { color: #002B49; }
