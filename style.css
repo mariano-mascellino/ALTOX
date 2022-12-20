@@ -50,6 +50,8 @@ select
 	border-radius: none;
 }
 
+
+
 .dosetoxique
 {
 	color : darkred;
@@ -154,6 +156,12 @@ a
     color : #0554F2;
 }
 
+a:hover
+{
+    text-decoration: underline;
+    font-size: 1.1em;
+}
+
 .preentete
 {
     background-color: white
@@ -173,6 +181,8 @@ input
 	line-height: 1em;
 	font-style: italic;
 }
+
+
 
 /*smartphone*/
 @media(max-width : 639px)
