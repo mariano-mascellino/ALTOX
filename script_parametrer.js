@@ -137,8 +137,8 @@ function generer_bloc_param_produit(produit, produit_ID,
     
     var contenu = '';
 
-    contenu = contenu.concat('<div class = "row paramproduit mt-2 pb-2 "> <div class="col-12"><h3>').concat(produit).concat('</h3>');
-    contenu = contenu.concat('<h4 class="mb-0">Membre supérieur</h4><h6 class="mb-0 pb-0 ');
+    contenu = contenu.concat('<div class = "paramproduit"><h3>').concat(produit).concat('</h3>');
+    contenu = contenu.concat('<h4>Membre supérieur</h4> <h6 class="');
 
     if (!is_defaut_relatif_ms){ contenu = contenu.concat(' modifie'); val_relatif_ms = modif_relatif_ms;}
 
@@ -151,13 +151,12 @@ function generer_bloc_param_produit(produit, produit_ID,
 
     contenu = contenu.concat('</h6>');
 
-    if (!is_defaut_relatif_ms){ contenu = contenu.concat('<p class="mb-0 pb-0" id="defaut_relative_MS_');
+    if (!is_defaut_relatif_ms){ contenu = contenu.concat('<p id="defaut_relative_MS_');
     contenu = contenu.concat(produit_ID);
     contenu = contenu.concat('"> Valeur par défaut : ');
     contenu = contenu.concat(val_defaut_relatif_ms);
     contenu = contenu.concat(' mg/kg</p> ');}
-
-    contenu = contenu.concat('<div class="mt-0 pb-2"><select id="valeur_relative_MS_');
+    contenu = contenu.concat('<select id="valeur_relative_MS_');
     contenu = contenu.concat(produit_ID);
     contenu = contenu.concat('" name="valeur_relative_PRODUIT">');
     
@@ -172,9 +171,9 @@ function generer_bloc_param_produit(produit, produit_ID,
         contenu = contenu.concat(' mg/kg</option>');
         }
 
-    contenu = contenu.concat('</select></div>');
+    contenu = contenu.concat('</select>');
     
-    contenu = contenu.concat('<h6 class="mb-0 pb-0 ');
+    contenu = contenu.concat('<h6 class="');
     if (!is_defaut_absolu_ms){ contenu = contenu.concat('modifie'); val_absolu_ms = modif_absolu_ms;}
 
     contenu = contenu.concat('" id="dose_absolue_MS_');
@@ -186,7 +185,7 @@ function generer_bloc_param_produit(produit, produit_ID,
 
     contenu = contenu.concat('</h6>');
 
-    if (!is_defaut_absolu_ms){ contenu = contenu.concat('<p class="mb-0 pb-0" id="defaut_absolu_MS_');
+    if (!is_defaut_absolu_ms){ contenu = contenu.concat('<p id="defaut_absolu_MS_');
     contenu = contenu.concat(produit_ID);
         if(val_defaut_absolu_ms != 0){
         contenu = contenu.concat('"> Valeur par défaut : ');
@@ -195,7 +194,7 @@ function generer_bloc_param_produit(produit, produit_ID,
         else{ contenu = contenu.concat('"> Valeur par défaut : aucune</p>');}
     }
 
-    contenu = contenu.concat('<div class="mt-0"><select id="valeur_absolue_MS_');
+    contenu = contenu.concat('<select id="valeur_absolue_MS_');
     contenu = contenu.concat(produit_ID);
     contenu = contenu.concat('" name="valeur_absolue_MS_PRODUIT">');
     
@@ -217,10 +216,10 @@ function generer_bloc_param_produit(produit, produit_ID,
         contenu = contenu.concat(' mg</option>');
         }
 
-    contenu = contenu.concat('</select></div></div>');
+    contenu = contenu.concat('</select>');
 
     //membre inf
-    contenu = contenu.concat('<div class="col-12"><h4 class="mt-2 mb-0">Membre inférieur</h4><h6 class="mb-0 pb-0 ');
+    contenu = contenu.concat('<h4 class="mt-2 mb-0">Membre inférieur</h4><h6 class=" ');
 
     if (!is_defaut_relatif_mi){ contenu = contenu.concat(' modifie'); val_relatif_mi = modif_relatif_mi;}
 
@@ -233,13 +232,13 @@ function generer_bloc_param_produit(produit, produit_ID,
 
     contenu = contenu.concat('</h6>');
 
-    if (!is_defaut_relatif_mi){ contenu = contenu.concat('<p class="mb-0 pb-0" id="defaut_relative_MI_');
+    if (!is_defaut_relatif_mi){ contenu = contenu.concat('<p id="defaut_relative_MI_');
     contenu = contenu.concat(produit_ID);
     contenu = contenu.concat('"> Valeur par défaut : ');
     contenu = contenu.concat(val_defaut_relatif_mi);
     contenu = contenu.concat(' mg/kg</p> ');}
 
-    contenu = contenu.concat('<div class="mt-0 pb-2"><select id="valeur_relative_MI_');
+    contenu = contenu.concat('<div><select id="valeur_relative_MI_');
     contenu = contenu.concat(produit_ID);
     contenu = contenu.concat('" name="valeur_relative_PRODUIT">');
     
@@ -256,8 +255,8 @@ function generer_bloc_param_produit(produit, produit_ID,
 
     contenu = contenu.concat('</select></div>');
     
-    contenu = contenu.concat('<h6 class="mb-0 pb-0 ');
-    if (!is_defaut_absolu_mi){ contenu = contenu.concat('modifie'); val_absolu_mi = modif_absolu_mi;}
+    contenu = contenu.concat('<h6 class=" ');
+    if (!is_defaut_absolu_mi){ contenu = contenu.concat(' modifie'); val_absolu_mi = modif_absolu_mi;}
 
     contenu = contenu.concat('" id="dose_absolue_MI_');
     contenu = contenu.concat(produit_ID);
@@ -268,7 +267,7 @@ function generer_bloc_param_produit(produit, produit_ID,
 
     contenu = contenu.concat('</h6>');
 
-    if (!is_defaut_absolu_mi){ contenu = contenu.concat('<p class="mb-0 pb-0" id="defaut_absolu_MI_');
+    if (!is_defaut_absolu_mi){ contenu = contenu.concat('<p id="defaut_absolu_MI_');
     contenu = contenu.concat(produit_ID);
         if(val_defaut_absolu_mi != 0){
         contenu = contenu.concat('"> Valeur par défaut : ');
@@ -277,7 +276,7 @@ function generer_bloc_param_produit(produit, produit_ID,
         else{ contenu = contenu.concat('">Valeur par défaut : aucune</p>');}
     }
 
-    contenu = contenu.concat('<div class="mt-0"><select id="valeur_absolue_MI_');
+    contenu = contenu.concat('<div><select id="valeur_absolue_MI_');
     contenu = contenu.concat(produit_ID);
     contenu = contenu.concat('" name="valeur_absolue_MI_PRODUIT">');
     
