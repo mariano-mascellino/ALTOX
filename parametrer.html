@@ -1,111 +1,92 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <title>Paramétrer - ALTOX</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css" />
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+
+<head>
+  <title>Paramétrer - ALTOX</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css" />
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+</head>
 
-  </head>
-  <body>
-    <div class="container ">
-        <!-- Titre -->
-        <h1 id="banniere">ALTOX</h1>
-        <h2>Page de personalisation des doses maximales.</h2>
-        <div class="paramfragile">
-            <h6>
-                <a href="index.html">
-                    <svg class="bi bi-arrow-left-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M7.854 4.646a.5.5 0 010 .708L5.207 8l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-                        <path fill-rule="evenodd" d="M4.5 8a.5.5 0 01.5-.5h6.5a.5.5 0 010 1H5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
-                    </svg>Revenir à la page principale
-                </a>
-            </h6>
-            <h6>
-                <a id="reinitialiser" href="parametrer.html">
-                    <svg class="bi bi-arrow-right-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L10.793 8 8.146 5.354a.5.5 0 010-.708z" clip-rule="evenodd"/>
-                        <path fill-rule="evenodd" d="M4 8a.5.5 0 01.5-.5H11a.5.5 0 010 1H4.5A.5.5 0 014 8z" clip-rule="evenodd"/>
-                    </svg>
-                    Restaurer les valeurs par défaut
-                </a>
-            </h6>
-        </div> 
-        <p align="justify" class="paramexplications">Cette page vous permet de personnaliser les doses maximales pour les différents produits. Des valeurs sont déterminées par défauts. Toutefois si elles ne vous conviennent pas vous pouvez les modifier individuellement. Vous pouvez modifier les valeurs ajustées au poids en mg/kg. Vous pouvez modifier les valeurs en absolues en mg ou décider de ne pas en déterminer. Si une valeur absolue est déterminée alors ALTOX choisit la valeur maximale la plus restrictive lors de son calcul. Vous pouvez également modifier le facteur de réduction de dose pour patients fragiles.
-        </p>
-        <div class="paramfragile">
-            <h3>Dose réduite</h3>
-            <h6>Adaptation de posologie pour les patients fragiles</h6>
-            <p id="defaut_fragile">Valeur par défaut 40%</p>
-            <div class="mt-0 pt-0">
-            <select id="valeur_fragile" name="valeur_fragile">
-                <option value="10"> Réduire de 10% </option>
-                <option value="20"> Réduire de 20% </option>
-                <option value="30"> Réduire de 30% </option>
-                <option value="40"> Réduire de 40% </option>
-                <option value="50"> Réduire de 50% </option>
-                <option value="60"> Réduire de 60% </option>
-            </select>
-            </div>
-        </div>
+<body>
+  <div class="container ">
+    <!-- Titre -->
+    <h1 id="banniere">ALTOX</h1>
+    <h2>Page de personalisation des doses maximales.</h2>
+    <div class="paramfragile">
+      <h6>
+        <a href="index.html">
+          <svg class="bi bi-arrow-left-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M7.854 4.646a.5.5 0 010 .708L5.207 8l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M4.5 8a.5.5 0 01.5-.5h6.5a.5.5 0 010 1H5a.5.5 0 01-.5-.5z" clip-rule="evenodd" />
+          </svg>Revenir à la page principale</a>
+      </h6>
+      <h6>
+        <a id="reinitialiser" href="parametrer.html">
+          <svg class="bi bi-arrow-right-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L10.793 8 8.146 5.354a.5.5 0 010-.708z" clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M4 8a.5.5 0 01.5-.5H11a.5.5 0 010 1H4.5A.5.5 0 014 8z" clip-rule="evenodd" />
+          </svg>Restaurer les valeurs par défaut</a>
+      </h6>
+    </div>
+    <p align="justify" class="paramexplications">Cette page vous permet de personnaliser les doses maximales pour les différents produits. Des valeurs sont déterminées par défauts. Toutefois si elles ne vous conviennent pas vous pouvez les modifier individuellement. Vous pouvez modifier les valeurs ajustées au poids en mg/kg. Vous pouvez modifier les valeurs en absolues en mg ou décider de ne pas en déterminer. Si une valeur absolue est déterminée alors ALTOX choisit la valeur maximale la plus restrictive lors de son calcul. Vous pouvez également modifier le facteur de réduction de dose pour patients fragiles.</p>
+    <div class="paramfragile">
+      <h3>Dose réduite</h3>
+      <h6>Adaptation de posologie pour les patients fragiles</h6>
+      <p id="defaut_fragile">Valeur par défaut 40%</p>
+      <div class="mt-0 pt-0">
+        <select id="valeur_fragile" name="valeur_fragile">
+          <option value="10">Réduire de 10%</option>
+          <option value="20">Réduire de 20%</option>
+          <option value="30">Réduire de 30%</option>
+          <option value="40">Réduire de 40%</option>
+          <option value="50">Réduire de 50%</option>
+          <option value="60">Réduire de 60%</option>
+        </select>
       </div>
-    <footer class="infos">
-        <!-- Aide cognitive + Bibliographie -->
-        <div class="">
-            <h3>Infos</h3>
-        </div>
-        <p class="">
-            <a href="parametrer.html">
-                <svg class="bi bi-arrow-right-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L10.793 8 8.146 5.354a.5.5 0 010-.708z" clip-rule="evenodd"/>
-                    <path fill-rule="evenodd" d="M4 8a.5.5 0 01.5-.5H11a.5.5 0 010 1H4.5A.5.5 0 014 8z" clip-rule="evenodd"/>
-                </svg>
-                Personnaliser les posologies
-            </a>
-        </p>
-        <p class="">
-            <a href="https://sfar.org/wp-content/uploads/2019/09/Intoxication-aux-anesthesiques-locaux.pdf">
-                <svg class="bi bi-arrow-right-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L10.793 8 8.146 5.354a.5.5 0 010-.708z" clip-rule="evenodd"/>
-                    <path fill-rule="evenodd" d="M4 8a.5.5 0 01.5-.5H11a.5.5 0 010 1H4.5A.5.5 0 014 8z" clip-rule="evenodd"/>
-                </svg>
-                Intoxication aux anesthésiques locaux 
-            </a>
-            <br/>
-            <a href="https://sfar.org/wp-content/uploads/2019/09/ac-intoxication-anesthesiques-locaux-pediatrie.pdf">
-                <svg class="bi bi-arrow-right-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L10.793 8 8.146 5.354a.5.5 0 010-.708z" clip-rule="evenodd"/>
-                    <path fill-rule="evenodd" d="M4 8a.5.5 0 01.5-.5H11a.5.5 0 010 1H4.5A.5.5 0 014 8z" clip-rule="evenodd"/>
-                </svg>
-                Intoxication aux anesthésiques locaux en pédiatrie
-            </a>
-        </p>
-        <p class=" ">
-            <a href="https://sfar.org/espace-professionel-anesthesiste-reanimateur/referentiels/">
-                <svg class="bi bi-arrow-right-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L10.793 8 8.146 5.354a.5.5 0 010-.708z" clip-rule="evenodd"/>
-                    <path fill-rule="evenodd" d="M4 8a.5.5 0 01.5-.5H11a.5.5 0 010 1H4.5A.5.5 0 014 8z" clip-rule="evenodd"/>
-                </svg>
-                Recommendations de la SFAR
-            </a>
-        </p>
-        <p class="">
-            Usage réservé aux professionnels de l'anesthésie. Posologies données à titre indicatif. Ne jamais dépasser la posologie maximale.
-        </p>
-        <p class="">
-            Créé par Mariano MASCELLINO 
-            <br/>
-             mmascellino@chu-grenoble.fr
-        </p>
-    </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="script_parametrer.js"></script>
-    </body>
+    </div>
+  </div>
+  <footer class="infos">
+    <!-- Aide cognitive + Bibliographie -->
+    <p>
+      <a href="parametrer.html">
+        <svg class="bi bi-arrow-right-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L10.793 8 8.146 5.354a.5.5 0 010-.708z" clip-rule="evenodd" />
+          <path fill-rule="evenodd" d="M4 8a.5.5 0 01.5-.5H11a.5.5 0 010 1H4.5A.5.5 0 014 8z" clip-rule="evenodd" />
+        </svg>Personnaliser les posologies</a>
+    </p>
+    <p>
+      <a href="https://sfar.org/wp-content/uploads/2019/09/Intoxication-aux-anesthesiques-locaux.pdf">
+        <svg class="bi bi-arrow-right-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L10.793 8 8.146 5.354a.5.5 0 010-.708z" clip-rule="evenodd" />
+          <path fill-rule="evenodd" d="M4 8a.5.5 0 01.5-.5H11a.5.5 0 010 1H4.5A.5.5 0 014 8z" clip-rule="evenodd" />
+        </svg>Intoxication aux anesthésiques locaux</a>
+      <br/>
+      <a href="https://sfar.org/wp-content/uploads/2019/09/ac-intoxication-anesthesiques-locaux-pediatrie.pdf">
+        <svg class="bi bi-arrow-right-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L10.793 8 8.146 5.354a.5.5 0 010-.708z" clip-rule="evenodd" />
+          <path fill-rule="evenodd" d="M4 8a.5.5 0 01.5-.5H11a.5.5 0 010 1H4.5A.5.5 0 014 8z" clip-rule="evenodd" />
+        </svg>Intoxication aux anesthésiques locaux en pédiatrie</a>
+    </p>
+    <p>
+      <a href="https://sfar.org/espace-professionel-anesthesiste-reanimateur/referentiels/">
+        <svg class="bi bi-arrow-right-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L10.793 8 8.146 5.354a.5.5 0 010-.708z" clip-rule="evenodd" />
+          <path fill-rule="evenodd" d="M4 8a.5.5 0 01.5-.5H11a.5.5 0 010 1H4.5A.5.5 0 014 8z" clip-rule="evenodd" />
+        </svg>Recommendations de la SFAR</a>
+    </p>
+    <p>Usage réservé aux professionnels de l'anesthésie. Posologies données à titre indicatif. Ne jamais dépasser la posologie maximale.</p>
+    <p>Créé par Mariano MASCELLINO.</p>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="script_parametrer.js"></script>
+</body>
+    
 </html>
