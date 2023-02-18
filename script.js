@@ -387,20 +387,20 @@ function desactiver_AL(AL) {
 }
 
 function toutmasquer() {
-	$("#Posologie1").hide();
-	$("#Concentration1").hide();
-	$("#VolumeMax1").hide();
-
-	$("#Posologie2").hide();
-	$("#Concentration2").hide();
-	$("#VolumeMax2").hide();
-
-	$('#blocMelangeVolumesDifferents').hide();
-	$('#blocMelangeVolumesEgaux').hide();
-
-	$("#ResultatPartiel1").hide();
-	$("#ResultatPartiel2").hide();
-	$("#ResultatTotal").hide();
+	document.querySelector("#Posologie1").style.display = "none";
+	document.querySelector("#Concentration1").style.display = "none";
+	document.querySelector("#VolumeMax1").style.display = "none";
+	
+	document.querySelector("#Posologie2").style.display = "none";
+	document.querySelector("#Concentration2").style.display = "none";
+	document.querySelector("#VolumeMax2").style.display = "none";
+	
+	document.querySelector("#blocMelangeVolumesDifferents").style.display = "none";
+	document.querySelector("#blocMelangeVolumesEgaux").style.display = "none";
+	
+	document.querySelector("#ResultatPartiel1").style.display = "none";
+	document.querySelector("#ResultatPartiel2").style.display = "none";
+	document.querySelector("#ResultatTotal").style.display = "none";
 }
 
 function reduction_fragile() {
@@ -416,7 +416,7 @@ function reduction_fragile() {
 }
 
 function mise_en_place_valeur_fragile() {
-	$("#valeur_fragile").html(String("Fragile (Dose réduite de ").concat(reduction_fragile()).concat("%)"));
+	document.getElementById('valeur_fragile').innerHTML = String("Fragile (Dose réduite de ") + reduction_fragile() + "%)";
 }
 
    /* SLIDE UP */
