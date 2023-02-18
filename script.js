@@ -1,4 +1,4 @@
-$(function() {
+document.addEventListener('DOMContentLoaded', () => {
 	mise_en_place();
 	creer_evenements(); //créé les liens entre les événements qui modifient le contenu et la fonction mise à jour
 });

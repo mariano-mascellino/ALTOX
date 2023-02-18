@@ -1,4 +1,4 @@
-$(function() {
+document.addEventListener('DOMContentLoaded', () => {
 	mise_en_place();
 	$("#banniere").click(function() {
 		location.assign("index.html")
