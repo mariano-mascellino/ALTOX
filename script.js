@@ -260,57 +260,56 @@ function activer_AL(AL) {
 }
 
 function mise_a_jour_volumes_egaux(vol1, vol2) {
-	$("#resultatMelangeVolumesEgaux").html(Math.round((vol1 + vol2) / 2).toString().concat(" ml"));
+	document.getElementById('resultatMelangeVolumesEgaux').innerHTML = (Math.round((vol1 + vol2) / 2).toString()) + " ml";
 }
 
 function mise_a_jour_volumes_differents(volmax1, volmax2) {
-	var vol1 = $("#Volume1").val();
-	var vol2 = $("#Volume2").val();
+	var vol1 = document.getElementById('Volume1').value;
+	var vol2 = document.getElementById('Volume2').value;
 	var doserel1 = Math.round(vol1 / volmax1 * 100);
 	var doserel2 = Math.round(vol2 / volmax2 * 100);
 	//on actualise les titres des anesthésiques locaux
-	$("#LibelleProduit1").html($("#Produit1 option:selected").text().concat(" (").concat($("#Concentration1 option:selected").text().concat(")")));
-	$("#LibelleProduit2").html($("#Produit2 option:selected").text().concat(" (").concat($("#Concentration2 option:selected").text().concat(")")));
+	document.getElementById('LibelleProduit1').innerHTML = document.querySelector('#Produit1 option:checked').text + " (" + document.querySelector('#Concentration1 option:checked').text + ')';
+	document.getElementById('LibelleProduit2').innerHTML = document.querySelector('#Produit2 option:checked').text + " (" + document.querySelector('#Concentration2 option:checked').text + ')';
 
 	//si Volume1 choisi
 	if (vol1 != '') {
 		//on modifie le texte de la dose relative
-		var texte = "Ce volume représente ";
-		texte = texte.concat(doserel1);
-		texte = texte.concat("% de la dose toxique.");
-		$("#ResultatPartiel1").html(texte);
+		var texte = 'Ce volume représente ';
+		texte = texte + doserel1;
+		texte = texte + "% de la dose toxique.";
+		document.getElementById('ResultatPartiel1').innerHTML = texte;
 
 		//on change la couleur si toxique ou non
 		if (doserel1 > 100) {
-			$("#ResultatPartiel1").prop("class", "dosetoxique");
+			document.getElementById('ResultatPartiel1').className = 'dosetoxique';
 		} 
         else {
-			$("#ResultatPartiel1").prop("class", "dosenontoxique");
+			document.getElementById('ResultatPartiel1').className = 'dosenontoxique';
 		}
 
 		//on affiche
-		$("#ResultatPartiel1").show();
-
+		document.querySelector("#ResultatPartiel1").style.display = "block";
 	} 
     else {
 		//sinon
 		//on cache la dose relative 1
-		$("#ResultatPartiel1").hide();
+		document.querySelector("#ResultatPartiel1").style.display = "none";
 
 		// si vol2 déterminé
 		if (vol2 != '') {
 			//on affiche une suggestion de complément de volume max en placeholder
 			var complement = Math.round(volmax1 * (1 - vol2 / volmax2));
-			$('#Volume1').prop("placeholder", String('max. ').concat(complement));
+			document.querySelector('#Volume1').setAttribute('placeholder', String('max. ') + complement);
 			if (complement > 0) {
-				$('#Volume1').prop("placeholder", String('max. ').concat(complement));
+				document.querySelector('#Volume1').setAttribute('placeholder', String('max. ') + complement);
 			} else {
-				$('#Volume1').prop("placeholder", '-');
+				document.querySelector('#Volume1').setAttribute('placeholder', '-');
 			}
 		} 
         else {
-			//sinon on réinitialise le placeholder volume2
-			$('#Volume1').prop("placeholder", String('Volume'));
+			//sinon on réinitialise le placeholder volume1
+			document.querySelector('#Volume1').setAttribute('placeholder', String('Volume'));
 		}
 	}
 
@@ -320,39 +319,39 @@ function mise_a_jour_volumes_differents(volmax1, volmax2) {
 		var texte = "Ce volume représente ";
 		texte = texte.concat(doserel2);
 		texte = texte.concat("% de la dose toxique.");
-		$("#ResultatPartiel2").html(texte);
+		document.getElementById('ResultatPartiel2').innerHTML = texte;
 
 		//on change la couleur si toxique ou non
 		if (doserel2 > 100) {
-			$("#ResultatPartiel2").prop("class", "dosetoxique");
-		} 
+			document.getElementById('ResultatPartiel2').className = 'dosetoxique';
+		}
         else {
-			$("#ResultatPartiel2").prop("class", "dosenontoxique");
+			document.getElementById('ResultatPartiel2').className = 'dosenontoxique';
 		}
 
 		//on affiche
-		$("#ResultatPartiel2").show();
+		document.querySelector("#ResultatPartiel2").style.display = "block";
 
 	} 
     else {
 		//sinon
 		//on cache la dose relative 2
-		$("#ResultatPartiel2").hide();
-		//on affiche une suggestion de complément de volume max en placeholder
+		document.querySelector("#ResultatPartiel2").style.display = "none";
 
+		//on affiche une suggestion de complément de volume max en placeholder
 		// si vol1 déterminé
 		if (vol1 != '') {
 			var complement = Math.round(volmax2 * (1 - vol1 / volmax1));
 			if (complement > 0) {
-				$('#Volume2').prop("placeholder", String('max. ').concat(complement));
+				document.querySelector('#Volume2').setAttribute('placeholder', String('max. ') + complement);
 			} 
             else {
 				$('#Volume2').prop("placeholder", '-');
 			}
 		} 
         else {
-			//sinon on réinitialise le placeholder volume1
-			$('#Volume2').prop("placeholder", String('Volume'));
+			//sinon on réinitialise le placeholder volume2
+			document.querySelector('#Volume2').setAttribute('placeholder', '-');
 		}
 	}
 
@@ -361,22 +360,22 @@ function mise_a_jour_volumes_differents(volmax1, volmax2) {
 	if (vol1 != '' && vol2 != '') {
 		//on modifie le texte de la dose relative
 		var texte = "En supposant la toxicité additive, le mélange est à ";
-		texte = texte.concat(dosetot);
-		texte = texte.concat("% de la dose toxique.");
-		$("#ResultatTotal").html(texte);
+		texte = texte + dosetot;
+		texte = texte + "% de la dose toxique.";
+		document.getElementById('ResultatTotal').innerHTML = texte;
 
 		if (dosetot > 100) {
-			$("#ResultatTotal").prop("class", "dosetoxique");
+			document.getElementById('ResultatTotal').className = 'dosetoxique';
 		} 
         else {
-			$("#ResultatTotal").prop("class", "dosenontoxique");
+			document.getElementById('ResultatTotal').className = 'dosenontoxique';
 		}
 
-		$("#ResultatTotal").show();
+		document.querySelector("#ResultatTotal").style.display = "block";
 
 	} 
     else {
-		$("#ResultatTotal").hide();
+		document.querySelector("#ResultatPartiel2").style.display = "none";
 	}
 }
 
