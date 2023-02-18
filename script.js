@@ -51,13 +51,13 @@ function mise_a_jour() {
 }
 
 function mise_a_jour_AL(AL) {
-	var produit = $('#Produit'.concat(AL)).val();
-	var site = $('#Site'.concat(AL)).val();
-	var poids = $('#poids').val();
+	var produit = document.getElementById('Produit' + AL).value;
+	var site = document.getElementById('Site' + AL).value;
+	var poids = document.getElementById('poids').value;
 	var poso = Math.round(poids * posologie(produit, site));
 	var poso_max = posologie_max(produit, site);
-	var fragile = $('#fragile').is(':checked');
-	var concentration = $('#Concentration'.concat(AL)).val();
+	var fragile = document.getElementById('fragile').checked;
+	var concentration = document.getElementById('Concentration' + AL).value;
 
 	//on borne la poso si besoin
 	if (poso_max != 0 && poso > poso_max) {
@@ -76,19 +76,19 @@ function mise_a_jour_AL(AL) {
 		if (poids != '') //si poids déterminé
 		{
 			//on affiche la dose max en mg
-			$('#Posologie'.concat(AL)).html('La dose maximale à ne pas dépasser est de <span class="resultat" >'.concat(poso).concat(" mg.</span>"));
-			$('#Posologie'.concat(AL)).show();
+			document.getElementById('Posologie' + AL).innerHTML = 'La dose maximale à ne pas dépasser est de <span class="resultat" >' + poso + " mg.</span>";
+			document.getElementById('Posologie' + AL).style.display = '';
 			//on affiche le choix de la concentration
-			$('#Concentration'.concat(AL)).show();
+			document.getElementById('Concentration' + AL).style.display = '';
 			//si concentration non choisie
 			if (concentration == "rien") {
 				//on masque le volume max
-				$('#VolumeMax'.concat(AL)).hide();
+				document.getElementById('VolumeMax' + AL).style.display = 'none';
 			} else { //si concentration choisie
 
 				//on affiche le volume max en ml
-				$('#VolumeMax'.concat(AL)).html('Pour cette concentration, le volume maximal recommandé est de <span class="resultat">'.concat(volume).concat(" ml.</span>"));
-				$('#VolumeMax'.concat(AL)).show();
+				document.getElementById('VolumeMax' + AL).innerHTML = 'Pour cette concentration, le volume maximal recommandé est de <span class="resultat">' + volume + " ml.</span>";
+				document.getElementById('VolumeMax' + AL).style.display = '';
 				return {
 					complet: true,
 					volmax: volume
@@ -98,22 +98,22 @@ function mise_a_jour_AL(AL) {
         else //si poids non choisi
 		{
 			//on affiche la dose max en mg/kg  
-			var texte = 'La dose maximale est de <span class="resultat">'.concat(posologie(produit, site)).concat(" mg/kg </span>");
+			var texte = 'La dose maximale est de <span class="resultat">' + posologie(produit, site) + " mg/kg </span>";
 			if (poso_max != 0) {
-				texte = texte.concat(' sans dépasser <span class="resultat">').concat(poso_max).concat(' mg</span>');
+				texte = texte + ' sans dépasser <span class="resultat">' + poso_max + ' mg</span>';
 			}
-			texte = texte.concat(".")
-			$('#Posologie'.concat(AL)).html(texte);
-			$('#Posologie'.concat(AL)).show();
-			$('#Concentration'.concat(AL)).hide();
-			$('#VolumeMax'.concat(AL)).hide();
+			texte = texte + '.'
+			document.getElementById('Posologie' + AL).innerHTML = texte;
+			document.getElementById('Posologie' + AL).style.display = '';
+			document.getElementById('Concentration' + AL).style.display = 'none';
+			document.getElementById('VolumeMax' + AL).style.display = 'none';
 		}
 	} 
     else {
 		//on masque la dose max en mg/kg ou en mg
-		$('#Posologie'.concat(AL)).hide();
-		$('#Concentration'.concat(AL)).hide();
-		$('#VolumeMax'.concat(AL)).hide();
+		document.getElementById('Posologie' + AL).style.display = 'none';
+		document.getElementById('Concentration' + AL).style.display = 'none';
+		document.getElementById('VolumeMax' + AL).style.display = 'non';
 	}
 	return {
 		complet: false,
