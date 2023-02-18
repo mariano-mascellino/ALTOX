@@ -226,39 +226,39 @@ function masquer_blocs_addition() {
 }
 
 function creer_evenements() {
-	$("#poids").change(function() {
+	document.getElementById("poids").addEventListener('change', () => {
 		mise_a_jour();
 	});
-	$("#fragile").change(function() {
+	document.getElementById("fragile").addEventListener('change', () => {
 		mise_a_jour();
 	});
-	$("#Produit1").change(function() {
+	document.getElementById("Produit1").addEventListener('change', () => {
 		$('#Concentration1 option:eq(0)').prop('selected', true);
 		mise_a_jour();
 	});
-	$("#Site1").change(function() {
+	document.getElementById("Site1").addEventListener('change', () => {
 		mise_a_jour();
 	});
-	$("#Concentration1").change(function() {
+	document.getElementById("Concentration1").addEventListener('change', () => {
 		mise_a_jour();
 	});
-	$("#Volume1").change(function() {
+	document.getElementById("Volume1").addEventListener('change', () => {
 		mise_a_jour();
 	});
-	$("#Produit2").change(function() {
+	document.getElementById("Produit2").addEventListener('change', () => {
 		$('#Concentration2 option:eq(0)').prop('selected', true);
 		mise_a_jour();
 	});
-	$("#Site2").change(function() {
+	document.getElementById("Site2").addEventListener('change', () => {
 		mise_a_jour();
 	});
-	$("#Concentration2").change(function() {
+	document.getElementById("Concentration2").addEventListener('change', () => {
 		mise_a_jour();
 	});
-	$("#Volume2").change(function() {
+	document.getElementById("Volume2").addEventListener('change', () => {
 		mise_a_jour();
 	});
-	$("#banniere").click(function() {
+	document.getElementById("banniere").addEventListener('click', () => {
 		location.reload();
 	});
 }
