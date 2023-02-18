@@ -222,7 +222,6 @@ function creer_evenements() {
 		mise_a_jour();
 	});
 	document.getElementById("Produit1").addEventListener('change', () => {
-		$('#Concentration1 option:eq(0)').prop('selected', true);
 		mise_a_jour();
 	});
 	document.getElementById("Site1").addEventListener('change', () => {
@@ -235,7 +234,6 @@ function creer_evenements() {
 		mise_a_jour();
 	});
 	document.getElementById("Produit2").addEventListener('change', () => {
-		$('#Concentration2 option:eq(0)').prop('selected', true);
 		mise_a_jour();
 	});
 	document.getElementById("Site2").addEventListener('change', () => {
@@ -308,8 +306,8 @@ function mise_a_jour_volumes_differents(volmax1, volmax2) {
 			}
 		} 
         else {
-			//sinon on réinitialise le placeholder volume1
-			document.querySelector('#Volume1').setAttribute('placeholder', String('Volume'));
+			//sinon on réinitialise le placeholder volume2
+			document.querySelector('#Volume2').setAttribute('placeholder', String('Volume'));
 		}
 	}
 
@@ -350,8 +348,8 @@ function mise_a_jour_volumes_differents(volmax1, volmax2) {
 			}
 		} 
         else {
-			//sinon on réinitialise le placeholder volume2
-			document.querySelector('#Volume2').setAttribute('placeholder', '-');
+			//sinon on réinitialise le placeholder volume1
+			document.querySelector('#Volume1').setAttribute('placeholder', 'Volume');
 		}
 	}
 
