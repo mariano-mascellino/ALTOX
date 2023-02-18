@@ -264,10 +264,10 @@ function creer_evenements() {
 }
 
 function activer_AL(AL) {
-	$('#blocAL'.concat(AL)).fadeTo("normal", 1);
-	$('#Produit'.concat(AL)).removeAttr("disabled");
-	$('#Site'.concat(AL)).removeAttr("disabled");
-	$('#Concentration'.concat(AL)).removeAttr("disabled");
+	fadeIn(document.getElementById('blocAL' + AL));
+	document.getElementById('Produit' + AL).removeAttribute('disabled');
+	document.getElementById('Site' + AL).removeAttribute("disabled");
+	document.getElementById('Concentration' + AL).removeAttribute("disabled");
 }
 
 function mise_a_jour_volumes_egaux(vol1, vol2) {
@@ -392,10 +392,10 @@ function mise_a_jour_volumes_differents(volmax1, volmax2) {
 }
 
 function desactiver_AL(AL) {
-	$('#blocAL'.concat(AL)).fadeTo(1, 0.5);
-	$('#Produit'.concat(AL)).prop("disabled", true);
-	$('#Site'.concat(AL)).prop("disabled", true);
-	$('#Concentration'.concat(AL)).prop("disabled", true);
+	document.getElementById('blocAL' + AL).style.opacity = 0.5;
+	document.getElementById('Produit' + AL).setAttribute("disabled", true);
+	document.getElementById('Site' + AL).setAttribute("disabled", true);
+	document.getElementById('Concentration' + AL).setAttribute("disabled", true);
 }
 
 function toutmasquer() {
@@ -498,3 +498,32 @@ var slideToggle = (target, duration = 500) => {
 	  return slideUp(target, duration);
 	}
 }
+
+// ** FADE OUT FUNCTION **
+function fadeOut(el) {
+	if (el.style.opacity != 0){
+		el.style.opacity = 1;
+		(function fade() {
+			if ((el.style.opacity -= .1) < 0) {
+				el.style.display = "none";
+			} else {
+				requestAnimationFrame(fade);
+			}
+		})();
+	}
+};
+
+// ** FADE IN FUNCTION **
+function fadeIn(el, display = "") {
+	if (el.style.opacity != 1){
+		el.style.opacity = 0;
+		el.style.display = display || "block";
+		(function fade() {
+			var val = parseFloat(el.style.opacity);
+			if (!((val += .1) > 1)) {
+				el.style.opacity = val;
+				requestAnimationFrame(fade);
+			}
+		})();
+	}
+};
