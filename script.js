@@ -344,7 +344,7 @@ function mise_a_jour_volumes_differents(volmax1, volmax2) {
 				document.querySelector('#Volume2').setAttribute('placeholder', String('max. ') + complement);
 			} 
             else {
-				$('#Volume2').prop("placeholder", '-');
+				document.querySelector('#Volume2').setAttribute('placeholder', '-');
 			}
 		} 
         else {
