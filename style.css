@@ -223,6 +223,10 @@ input
 	{
 		width: 60px;
 	}
+	#Volume1, #Volume2
+	{
+		width:100px;
+	}
 }
 
 /*tablettes*/
