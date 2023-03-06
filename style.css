@@ -183,6 +183,10 @@ input
 	font-style: italic;
 }
 
+#Volume1, #Volume2
+{
+	width:100px;
+}
 /*smartphone*/
 @media(max-width : 639px)
 {
@@ -222,10 +226,6 @@ input
 	#poids
 	{
 		width: 60px;
-	}
-	#Volume1, #Volume2
-	{
-		width:100px;
 	}
 }
 
