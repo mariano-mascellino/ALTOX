@@ -260,7 +260,7 @@ function activer_AL(AL) {
 }
 
 function mise_a_jour_volumes_egaux(vol1, vol2) {
-	$("#resultatMelangeVolumesEgaux").html(Math.round((vol1 + vol2) / 2).toString().concat(" ml"));
+	$("#resultatMelangeVolumesEgaux").html(Math.round(2*(vol1*vol2)/(vol1+vol2)).toString().concat(" ml"));
 }
 
 function mise_a_jour_volumes_differents(volmax1, volmax2) {
