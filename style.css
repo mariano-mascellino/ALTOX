@@ -1,10 +1,10 @@
 
 body
 {
-	padding-top: 10px;
-	/*background-color: #3350A6;*/
-    background-color: #F2F2F2;
-    background: linear-gradient(135deg, #3350A655 25%, transparent 25%) -4px 0/ 8px 8px, linear-gradient(225deg, #3350A6 25%, transparent 25%) -4px 0/ 8px 8px, linear-gradient(315deg, #3350A655 25%, transparent 25%) 0px 0/ 8px 8px, linear-gradient(45deg, #3350A6 25%, #F2F2F2 25%) 0px 0/ 8px 8px;
+    padding-top: 10px;
+    background-color: #F7F9FC;
+    background-image: url("soft-wallpaper.png");
+    background-repeat: repeat;
 }
 
 #patient, .blocproduits, .blocmelanges, .bloctoxcum, .paramexplications, .paramfragile, .paramproduit
