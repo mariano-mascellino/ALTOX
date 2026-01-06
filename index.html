@@ -14,11 +14,15 @@
 </head>
 
 <body>
-  <h1 id="banniere">ALTOX</h1>
-  <h2>Aide au calcul de doses maximales d'anesthésiques locaux.</h2>
-  <!-- Bloc sur poids/dose réduite -->
-  <div id="corps">
-    <div id="patient">
+  <div class="app">
+    <header class="app-header">
+      <p class="app-eyebrow">Calculateur clinique</p>
+      <h1 id="banniere">ALTOX</h1>
+      <h2>Aide au calcul de doses maximales d'anesthésiques locaux.</h2>
+    </header>
+    <!-- Bloc sur poids/dose réduite -->
+    <div id="corps" class="app-grid">
+    <div id="patient" class="card">
       <h3>Le patient</h3>
       <div>
         <input type="number" style="text-align:center" min="35" max="100" step="1" placeholder="Poids" id="poids" />
@@ -30,7 +34,7 @@
       </div>
     </div>
     <!-- Bloc anesthésique local 1-->
-    <div class="blocproduits" id="blocAL1">
+    <div class="blocproduits card" id="blocAL1">
       <h3>Le premier produit</h3>
       <!-- Choix du produit-->
       <select name="Produit1" id="Produit1">
@@ -73,7 +77,7 @@
         <span class="resultat">36 ml</span>.</p>
     </div>
     <!-- Bloc anesthésique local 2-->
-    <div class="blocproduits" id="blocAL2">
+    <div class="blocproduits card" id="blocAL2">
       <div>
         <h3>Le second produit</h3>
       </div>
@@ -113,14 +117,14 @@
     </div>
     <!-- Bloc des mélanges -->
     <!-- Mélange à volume égal -->
-    <div class="blocmelanges" id="blocMelangeVolumesEgaux">
+    <div class="blocmelanges card" id="blocMelangeVolumesEgaux">
       <h3>Mélange à volumes égaux</h3>
       <p>En mélangeant à volume égaux les deux produits indiqués aux concentrations choisies, il ne faudrait pas administer plus de</p>
       <p class="resultat" id="resultatMelangeVolumesEgaux">36 ml</p>
       <p>Ce résultat suppose la toxicité comme additive.</p>
     </div>
     <!-- Mélange à volumes différents -->
-    <div class="blocmelanges" id="blocMelangeVolumesDifferents">
+    <div class="blocmelanges card" id="blocMelangeVolumesDifferents">
       <h3>Mélange à volumes différents</h3>
       <!-- Produit 1-->
       <h6 id="LibelleProduit1">Lidocaïne (20 mg/ml)</h6>
@@ -135,11 +139,11 @@
       <!-- Cumul -->
       <p id="ResultatTotal">En supposant la toxicité additive, le mélange est à 90% de la dose toxique.</p>
     </div>
-  </div>
+    </div>
   <!-- 
         </div>
         -->
-  <footer class="infos">
+    <footer class="infos card">
     <!-- Aide cognitive + Bibliographie -->
     <p>
       <a href="parametrer.html">
@@ -170,8 +174,10 @@
     </p>
     <p>Usage réservé aux professionnels de l'anesthésie. Posologies données à titre indicatif. Ne jamais dépasser la posologie maximale.</p>
     <p>Créé par Mariano MASCELLINO.</p>
-  </footer>
+    </footer>
+  </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="posologies.js"></script>
   <script src="script.js"></script>
 </body>
 

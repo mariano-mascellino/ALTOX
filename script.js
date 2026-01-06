@@ -53,11 +53,12 @@ function mise_a_jour() {
 function mise_a_jour_AL(AL) {
 	var produit = $('#Produit'.concat(AL)).val();
 	var site = $('#Site'.concat(AL)).val();
-	var poids = $('#poids').val();
+	var poids = parseNumberOrDefault($('#poids').val(), NaN);
+	var poids_valide = Number.isFinite(poids) && poids > 0;
 	var poso = Math.round(poids * posologie(produit, site));
 	var poso_max = posologie_max(produit, site);
 	var fragile = $('#fragile').is(':checked');
-	var concentration = $('#Concentration'.concat(AL)).val();
+	var concentration = parseNumberOrDefault($('#Concentration'.concat(AL)).val(), NaN);
 
 	//on borne la poso si besoin
 	if (poso_max != 0 && poso > poso_max) {
@@ -70,10 +71,10 @@ function mise_a_jour_AL(AL) {
 	};
 
 	//calcul du volume
-	var volume = Math.round(poso / concentration);
+	var volume = Number.isFinite(concentration) && concentration > 0 ? Math.round(poso / concentration) : NaN;
 	//si produit choisi ET site choisi
 	if (produit != 'rien' && site != 'rien') {
-		if (poids != '') //si poids déterminé
+		if (poids_valide) //si poids déterminé
 		{
 			//on affiche la dose max en mg
 			$('#Posologie'.concat(AL)).html('La dose maximale à ne pas dépasser est de <span class="resultat" >'.concat(poso).concat(" mg.</span>"));
@@ -81,7 +82,7 @@ function mise_a_jour_AL(AL) {
 			//on affiche le choix de la concentration
 			$('#Concentration'.concat(AL)).show();
 			//si concentration non choisie
-			if (concentration == "rien") {
+			if (!Number.isFinite(concentration) || concentration <= 0) {
 				//on masque le volume max
 				$('#VolumeMax'.concat(AL)).hide();
 			} else { //si concentration choisie
@@ -125,37 +126,20 @@ function mise_a_jour_AL(AL) {
 
 function posologie(produit, site) {
 	//en mg/kg
-	var posologie_membre_superieur = {
-		"Lidocaine": 6,
-		"Lidocaine_adre": 7,
-		"Mepivacaine": 6,
-		"Ropivacaine": 3,
-		"Bupivacaine": 2.5,
-		"Bupivacaine_adre": 2.5,
-		"Levobupivacaine": 2.5,
-	};
-
-	var posologie_membre_inferieur = {
-		"Lidocaine": 7,
-		"Lidocaine_adre": 10,
-		"Mepivacaine": 6,
-		"Ropivacaine": 4,
-		"Bupivacaine": 2.5,
-		"Bupivacaine_adre": 2.5,
-		"Levobupivacaine": 2.5,
-	};
+	var posologie_membre_superieur = posologies_ms_defaut();
+	var posologie_membre_inferieur = posologies_mi_defaut();
 
 	if (site == "Membre_superieur") {
 		var valeur_modifiee = localStorage.getItem(String("relatif_ms_").concat(produit));
-		if (valeur_modifiee != null) {
-			return valeur_modifiee;
+		if (valeur_modifiee != null && valeur_modifiee != 'null') {
+			return parseNumberOrDefault(valeur_modifiee, posologie_membre_superieur[produit]);
 		}
 		return posologie_membre_superieur[produit];
 	} 
     else if (site == "Membre_inferieur") {
 		var valeur_modifiee = localStorage.getItem(String("relatif_mi_").concat(produit));
-		if (valeur_modifiee != null) {
-			return valeur_modifiee;
+		if (valeur_modifiee != null && valeur_modifiee != 'null') {
+			return parseNumberOrDefault(valeur_modifiee, posologie_membre_inferieur[produit]);
 		}
 		return posologie_membre_inferieur[produit];
 	}
@@ -165,37 +149,20 @@ function posologie(produit, site) {
 
 function posologie_max(produit, site) {
 	//en mg
-	var posologie_max_membre_superieur = {
-		"Lidocaine": 0,
-		"Lidocaine_adre": 500,
-		"Mepivacaine": 400,
-		"Ropivacaine": 225,
-		"Bupivacaine": 0,
-		"Bupivacaine_adre": 150,
-		"Levobupivacaine": 150,
-	};
-
-	var posologie_max_membre_inferieur = {
-		"Lidocaine": 0,
-		"Lidocaine_adre": 700,
-		"Mepivacaine": 400,
-		"Ropivacaine": 300,
-		"Bupivacaine": 0,
-		"Bupivacaine_adre": 180,
-		"Levobupivacaine": 150,
-	};
+	var posologie_max_membre_superieur = posologies_max_ms_defaut();
+	var posologie_max_membre_inferieur = posologies_max_mi_defaut();
 
 	if (site == "Membre_superieur") {
 		var valeur_modifiee = localStorage.getItem(String("absolu_ms_").concat(produit));
-		if (valeur_modifiee != null) {
-			return valeur_modifiee;
+		if (valeur_modifiee != null && valeur_modifiee != 'null') {
+			return parseNumberOrDefault(valeur_modifiee, posologie_max_membre_superieur[produit]);
 		}
 		return posologie_max_membre_superieur[produit]
 	} 
     else if (site == "Membre_inferieur") {
-		var valeur_modifiee = localStorage.getItem(String("relatif_mi_").concat(produit));
-		if (valeur_modifiee != null) {
-			return valeur_modifiee;
+		var valeur_modifiee = localStorage.getItem(String("absolu_mi_").concat(produit));
+		if (valeur_modifiee != null && valeur_modifiee != 'null') {
+			return parseNumberOrDefault(valeur_modifiee, posologie_max_membre_inferieur[produit]);
 		}
 		return posologie_max_membre_inferieur[produit];
 	}
@@ -260,20 +227,28 @@ function activer_AL(AL) {
 }
 
 function mise_a_jour_volumes_egaux(vol1, vol2) {
-	$("#resultatMelangeVolumesEgaux").html(Math.round(2*(vol1*vol2)/(vol1+vol2)).toString().concat(" ml"));
+	var denom = vol1 + vol2;
+	if (Number.isFinite(vol1) && Number.isFinite(vol2) && denom > 0) {
+		$("#resultatMelangeVolumesEgaux").html(Math.round(2 * (vol1 * vol2) / denom).toString().concat(" ml"));
+	} 
+    else {
+		$("#resultatMelangeVolumesEgaux").html("-")
+	}
 }
 
 function mise_a_jour_volumes_differents(volmax1, volmax2) {
-	var vol1 = $("#Volume1").val();
-	var vol2 = $("#Volume2").val();
-	var doserel1 = Math.round(vol1 / volmax1 * 100);
-	var doserel2 = Math.round(vol2 / volmax2 * 100);
+	var vol1 = parseNumberOrDefault($("#Volume1").val(), NaN);
+	var vol2 = parseNumberOrDefault($("#Volume2").val(), NaN);
+	var vol1_defini = Number.isFinite(vol1) && vol1 >= 0;
+	var vol2_defini = Number.isFinite(vol2) && vol2 >= 0;
+	var doserel1 = vol1_defini && volmax1 > 0 ? Math.round(vol1 / volmax1 * 100) : NaN;
+	var doserel2 = vol2_defini && volmax2 > 0 ? Math.round(vol2 / volmax2 * 100) : NaN;
 	//on actualise les titres des anesthésiques locaux
 	$("#LibelleProduit1").html($("#Produit1 option:selected").text().concat(" (").concat($("#Concentration1 option:selected").text().concat(")")));
 	$("#LibelleProduit2").html($("#Produit2 option:selected").text().concat(" (").concat($("#Concentration2 option:selected").text().concat(")")));
 
 	//si Volume1 choisi
-	if (vol1 != '') {
+	if (vol1_defini) {
 		//on modifie le texte de la dose relative
 		var texte = "Ce volume représente ";
 		texte = texte.concat(doserel1);
@@ -298,7 +273,7 @@ function mise_a_jour_volumes_differents(volmax1, volmax2) {
 		$("#ResultatPartiel1").hide();
 
 		// si vol2 déterminé
-		if (vol2 != '') {
+		if (vol2_defini && volmax2 > 0) {
 			//on affiche une suggestion de complément de volume max en placeholder
 			var complement = Math.round(volmax1 * (1 - vol2 / volmax2));
 			$('#Volume1').prop("placeholder", String('max. ').concat(complement));
@@ -315,7 +290,7 @@ function mise_a_jour_volumes_differents(volmax1, volmax2) {
 	}
 
 	//si Volume2 choisi
-	if (vol2 != '') {
+	if (vol2_defini) {
 		//on modifie le texte de la dose relative
 		var texte = "Ce volume représente ";
 		texte = texte.concat(doserel2);
@@ -341,7 +316,7 @@ function mise_a_jour_volumes_differents(volmax1, volmax2) {
 		//on affiche une suggestion de complément de volume max en placeholder
 
 		// si vol1 déterminé
-		if (vol1 != '') {
+		if (vol1_defini && volmax1 > 0) {
 			var complement = Math.round(volmax2 * (1 - vol1 / volmax1));
 			if (complement > 0) {
 				$('#Volume2').prop("placeholder", String('max. ').concat(complement));
@@ -358,7 +333,7 @@ function mise_a_jour_volumes_differents(volmax1, volmax2) {
 
 	//si Volume1 et Volume2 choisis
 	var dosetot = doserel1 + doserel2;
-	if (vol1 != '' && vol2 != '') {
+	if (vol1_defini && vol2_defini && Number.isFinite(dosetot)) {
 		//on modifie le texte de la dose relative
 		var texte = "En supposant la toxicité additive, le mélange est à ";
 		texte = texte.concat(dosetot);
@@ -411,7 +386,7 @@ function reduction_fragile() {
 		return DEFAUT;
 	} 
     else {
-		return valeur
+		return parseNumberOrDefault(valeur, DEFAUT)
 	};
 
 }
