@@ -59,6 +59,11 @@ function mise_en_place() {
 		var val_defaut_absolu_mi = posologies_max_mi_def[produit_ID];
 		var has_defaut_absolu_mi = true;
 
+		modif_relatif_ms = modif_relatif_ms == null || modif_relatif_ms == 'null' ? null : parseNumberOrDefault(modif_relatif_ms, val_defaut_relatif_ms);
+		modif_absolu_ms = modif_absolu_ms == null || modif_absolu_ms == 'null' ? null : parseNumberOrDefault(modif_absolu_ms, val_defaut_absolu_ms);
+		modif_relatif_mi = modif_relatif_mi == null || modif_relatif_mi == 'null' ? null : parseNumberOrDefault(modif_relatif_mi, val_defaut_relatif_mi);
+		modif_absolu_mi = modif_absolu_mi == null || modif_absolu_mi == 'null' ? null : parseNumberOrDefault(modif_absolu_mi, val_defaut_absolu_mi);
+
 		//on génère le bloc
 		$(".container").append(generer_bloc_param_produit(
 			produit, produit_ID,
@@ -366,10 +371,10 @@ function creer_evenement_bloc_param_produit(produit_ID) {
 
 function bloc_modifie(produit_ID) {
 	//récupération des valeurs saisies
-	var input_dose_relative_ms = $(String("#valeur_relative_MS_").concat(produit_ID)).val();
-	var input_dose_absolue_ms = $(String("#valeur_absolue_MS_").concat(produit_ID)).val();
-	var input_dose_relative_mi = $(String("#valeur_relative_MI_").concat(produit_ID)).val();
-	var input_dose_absolue_mi = $(String("#valeur_absolue_MI_").concat(produit_ID)).val();
+	var input_dose_relative_ms = parseNumberOrDefault($(String("#valeur_relative_MS_").concat(produit_ID)).val(), NaN);
+	var input_dose_absolue_ms = parseNumberOrDefault($(String("#valeur_absolue_MS_").concat(produit_ID)).val(), NaN);
+	var input_dose_relative_mi = parseNumberOrDefault($(String("#valeur_relative_MI_").concat(produit_ID)).val(), NaN);
+	var input_dose_absolue_mi = parseNumberOrDefault($(String("#valeur_absolue_MI_").concat(produit_ID)).val(), NaN);
 
 	//récupération des valeurs stockées
 	var modif_relatif_ms = localStorage.getItem(String("relatif_ms_").concat(produit_ID));
@@ -382,6 +387,11 @@ function bloc_modifie(produit_ID) {
 	var def_absolu_ms = posologies_max_ms_defaut()[produit_ID];
 	var def_relatif_mi = posologies_mi_defaut()[produit_ID];
 	var def_absolu_mi = posologies_max_mi_defaut()[produit_ID];
+
+	modif_relatif_ms = modif_relatif_ms == null || modif_relatif_ms == 'null' ? null : parseNumberOrDefault(modif_relatif_ms, def_relatif_ms);
+	modif_absolu_ms = modif_absolu_ms == null || modif_absolu_ms == 'null' ? null : parseNumberOrDefault(modif_absolu_ms, def_absolu_ms);
+	modif_relatif_mi = modif_relatif_mi == null || modif_relatif_mi == 'null' ? null : parseNumberOrDefault(modif_relatif_mi, def_relatif_mi);
+	modif_absolu_mi = modif_absolu_mi == null || modif_absolu_mi == 'null' ? null : parseNumberOrDefault(modif_absolu_mi, def_absolu_mi);
 
 	//met à jour les paramètres du bloc modifié
 	//dose relative ms
@@ -532,79 +542,99 @@ function bloc_modifie(produit_ID) {
 			//on affiche la valeur par défaut
 		}
 	}
-	//actualisation de la page (bêta)
-	location.reload();
+	actualiser_bloc(produit_ID);
 }
 
-function posologies_ms_defaut() {
-	var issou = ({
-		"Lidocaine": 6,
-		"Lidocaine_adre": 7,
-		"Mepivacaine": 6,
-		"Ropivacaine": 3,
-		"Bupivacaine": 2.5,
-		"Bupivacaine_adre": 2.5,
-		"Levobupivacaine": 2.5,
+function actualiser_bloc(produit_ID) {
+	var def_relatif_ms = posologies_ms_defaut()[produit_ID];
+	var def_absolu_ms = posologies_max_ms_defaut()[produit_ID];
+	var def_relatif_mi = posologies_mi_defaut()[produit_ID];
+	var def_absolu_mi = posologies_max_mi_defaut()[produit_ID];
+
+	var modif_relatif_ms = localStorage.getItem(String("relatif_ms_").concat(produit_ID));
+	var modif_absolu_ms = localStorage.getItem(String("absolu_ms_").concat(produit_ID));
+	var modif_relatif_mi = localStorage.getItem(String("relatif_mi_").concat(produit_ID));
+	var modif_absolu_mi = localStorage.getItem(String("absolu_mi_").concat(produit_ID));
+
+	var is_modifie_relatif_ms = modif_relatif_ms != null && modif_relatif_ms != 'null';
+	var is_modifie_absolu_ms = modif_absolu_ms != null && modif_absolu_ms != 'null';
+	var is_modifie_relatif_mi = modif_relatif_mi != null && modif_relatif_mi != 'null';
+	var is_modifie_absolu_mi = modif_absolu_mi != null && modif_absolu_mi != 'null';
+
+	mettre_a_jour_affichage_dose({
+		produit_ID: produit_ID,
+		suffix: "MS",
+		type: "relative",
+		is_modifie: is_modifie_relatif_ms,
+		valeur_defaut: def_relatif_ms,
+		unite: "mg/kg"
 	});
-	return issou;
-}
 
-function posologies_max_ms_defaut() {
-	var issou =
-		({
-			"Lidocaine": 0,
-			"Lidocaine_adre": 500,
-			"Mepivacaine": 400,
-			"Ropivacaine": 225,
-			"Bupivacaine": 0,
-			"Bupivacaine_adre": 150,
-			"Levobupivacaine": 150,
-		});
-
-	return issou;
-
-}
-
-function posologies_mi_defaut() {
-	var issou =
-		({
-			"Lidocaine": 7,
-			"Lidocaine_adre": 10,
-			"Mepivacaine": 6,
-			"Ropivacaine": 4,
-			"Bupivacaine": 2.5,
-			"Bupivacaine_adre": 2.5,
-			"Levobupivacaine": 2.5,
-		});
-
-	return issou;
-}
-
-function posologies_max_mi_defaut() {
-	var issou =
-		({
-			"Lidocaine": 0,
-			"Lidocaine_adre": 700,
-			"Mepivacaine": 400,
-			"Ropivacaine": 300,
-			"Bupivacaine": 0,
-			"Bupivacaine_adre": 180,
-			"Levobupivacaine": 150,
-		});
-
-	return issou;
-}
-
-function libelles_produits() {
-
-	var etiq = ({
-		"Bupivacaine": "Bupivacaïne",
-		"Bupivacaine_adre": "Bupivacaïne adrénalinée",
-		"Levobupivacaine": "Lévobupivacaïne",
-		"Lidocaine": "Lidocaïne",
-		"Lidocaine_adre": "Lidocaïne adrénalinée",
-		"Mepivacaine": "Mépivacaïne",
-		"Ropivacaine": "Ropivacaïne",
+	mettre_a_jour_affichage_dose({
+		produit_ID: produit_ID,
+		suffix: "MS",
+		type: "absolue",
+		is_modifie: is_modifie_absolu_ms,
+		valeur_defaut: def_absolu_ms,
+		unite: "mg"
 	});
-	return etiq;
+
+	mettre_a_jour_affichage_dose({
+		produit_ID: produit_ID,
+		suffix: "MI",
+		type: "relative",
+		is_modifie: is_modifie_relatif_mi,
+		valeur_defaut: def_relatif_mi,
+		unite: "mg/kg"
+	});
+
+	mettre_a_jour_affichage_dose({
+		produit_ID: produit_ID,
+		suffix: "MI",
+		type: "absolue",
+		is_modifie: is_modifie_absolu_mi,
+		valeur_defaut: def_absolu_mi,
+		unite: "mg"
+	});
+}
+
+function mettre_a_jour_affichage_dose(options) {
+	var base_label = options.type == "relative" ? "Dose maximale relative" : "Dose maximale absolue";
+	var header_id = options.type == "relative"
+		? String("#dose_relative_").concat(options.suffix).concat("_").concat(options.produit_ID)
+		: String("#dose_absolue_").concat(options.suffix).concat("_").concat(options.produit_ID);
+
+	var defaut_id = options.type == "relative"
+		? String("#defaut_relative_").concat(options.suffix).concat("_").concat(options.produit_ID)
+		: String("#defaut_absolu_").concat(options.suffix).concat("_").concat(options.produit_ID);
+
+	var header = $(header_id);
+	if (options.is_modifie) {
+		header.addClass("modifie");
+		header.text(base_label.concat(" (modifiée)"));
+		ajouter_ou_mettre_a_jour_defaut(defaut_id, header_id, options.valeur_defaut, options.unite);
+	} 
+    else {
+		header.removeClass("modifie");
+		header.text(base_label.concat(" (par défaut)"));
+		$(defaut_id).remove();
+	}
+}
+
+function ajouter_ou_mettre_a_jour_defaut(defaut_id, header_id, valeur_defaut, unite) {
+	var texte_defaut = " Valeur par défaut : ";
+	if (valeur_defaut === 0 && unite === "mg") {
+		texte_defaut = texte_defaut.concat("aucune");
+	} 
+    else {
+		texte_defaut = texte_defaut.concat(valeur_defaut).concat(" ").concat(unite);
+	}
+
+	if ($(defaut_id).length > 0) {
+		$(defaut_id).text(texte_defaut);
+	} 
+    else {
+		$(String('<p id="').concat(defaut_id.slice(1)).concat('">').concat(texte_defaut).concat("</p>"))
+			.insertAfter($(header_id));
+	}
 }
