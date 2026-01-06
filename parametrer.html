@@ -16,11 +16,14 @@
 </head>
 
 <body>
-  <div class="container ">
-    <!-- Titre -->
-    <h1 id="banniere">ALTOX</h1>
-    <h2>Page de personalisation des doses maximales.</h2>
-    <div class="paramfragile">
+  <div class="app">
+    <header class="app-header">
+      <p class="app-eyebrow">Paramètres cliniques</p>
+      <h1 id="banniere">ALTOX</h1>
+      <h2>Page de personalisation des doses maximales.</h2>
+    </header>
+    <div class="container">
+      <div class="paramfragile card">
       <h6>
         <a href="index.html">
           <svg class="bi bi-arrow-left-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -36,8 +39,8 @@
           </svg>Restaurer les valeurs par défaut</a>
       </h6>
     </div>
-    <p align="justify" class="paramexplications">Cette page vous permet de personnaliser les doses maximales pour les différents produits. Des valeurs sont déterminées par défauts. Toutefois si elles ne vous conviennent pas vous pouvez les modifier individuellement. Vous pouvez modifier les valeurs ajustées au poids en mg/kg. Vous pouvez modifier les valeurs en absolues en mg ou décider de ne pas en déterminer. Si une valeur absolue est déterminée alors ALTOX choisit la valeur maximale la plus restrictive lors de son calcul. Vous pouvez également modifier le facteur de réduction de dose pour patients fragiles.</p>
-    <div class="paramfragile">
+      <p align="justify" class="paramexplications card">Cette page vous permet de personnaliser les doses maximales pour les différents produits. Des valeurs sont déterminées par défauts. Toutefois si elles ne vous conviennent pas vous pouvez les modifier individuellement. Vous pouvez modifier les valeurs ajustées au poids en mg/kg. Vous pouvez modifier les valeurs en absolues en mg ou décider de ne pas en déterminer. Si une valeur absolue est déterminée alors ALTOX choisit la valeur maximale la plus restrictive lors de son calcul. Vous pouvez également modifier le facteur de réduction de dose pour patients fragiles.</p>
+      <div class="paramfragile card">
       <h3>Dose réduite</h3>
       <h6>Adaptation de posologie pour les patients fragiles</h6>
       <p id="defaut_fragile">Valeur par défaut 40%</p>
@@ -52,8 +55,8 @@
         </select>
       </div>
     </div>
-  </div>
-  <footer class="infos">
+    </div>
+    <footer class="infos card">
     <!-- Aide cognitive + Bibliographie -->
     <p>
       <a href="parametrer.html">
@@ -84,7 +87,8 @@
     </p>
     <p>Usage réservé aux professionnels de l'anesthésie. Posologies données à titre indicatif. Ne jamais dépasser la posologie maximale.</p>
     <p>Créé par Mariano MASCELLINO.</p>
-  </footer>
+    </footer>
+  </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="posologies.js"></script>
   <script src="script_parametrer.js"></script>

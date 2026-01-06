@@ -1,22 +1,62 @@
 
 body
 {
-    padding-top: 10px;
-    background-color: #F7F9FC;
-    background-image: url("soft-wallpaper.png");
-    background-repeat: repeat;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fb;
+    background-image: radial-gradient(circle at 20% 20%, rgba(76, 124, 243, 0.08), transparent 40%),
+        radial-gradient(circle at 80% 10%, rgba(22, 117, 242, 0.12), transparent 35%);
+    background-repeat: no-repeat;
+    font-family: "Inter", "Lato", "Helvetica Neue", Arial, sans-serif;
+    color: #0b1b3a;
+}
+
+.app
+{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+}
+
+.app-header
+{
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.app-eyebrow
+{
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #4d5f86;
+    margin: 0 0 8px;
+}
+
+.app-grid
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
 }
 
 #patient, .blocproduits, .blocmelanges, .bloctoxcum, .paramexplications, .paramfragile, .paramproduit
 {
-    background-color: #F2F2F2;
-	line-height: 40px;
+    background-color: transparent;
+	line-height: 36px;
 	text-align: center;
-	font-family : "Lato";
-	border-top: 2px solid white;
-	border-bottom: 2px solid white;
-    	color :  #010D26;
-	border-radius: 10px;
+	color :  #0b1b3a;
+	border-radius: 16px;
+}
+
+.card
+{
+    background-color: #ffffff;
+    border: 1px solid rgba(13, 31, 61, 0.06);
+    border-radius: 18px;
+    box-shadow: 0 20px 40px rgba(12, 28, 54, 0.08);
+    padding: 16px 18px;
 }
 
 #poids, #Volume1, #Volume2
@@ -45,10 +85,11 @@ body
 
 select
 {
-	/*background-color: #DFE2F2;
-	*/
-	border : none;
-	border-radius: none;
+	border: 1px solid rgba(11, 27, 58, 0.15);
+	border-radius: 12px;
+	padding: 8px 10px;
+	background-color: #f8faff;
+	color: #0b1b3a;
 }
 
 
@@ -69,49 +110,42 @@ select
 
 .infos
 {
-	background-color: #F2F2F2;
+	background-color: transparent;
 	text-align: center;
 	line-height: 20px;
-	border-top: 2px solid white;
-	border-bottom: 2px solid white;
+	border-top: none;
+	border-bottom: none;
 }
 
 h1
 {
-	background-color: #F2F2F2;
-	line-height: 40px;
+	line-height: 44px;
 	text-align: center;
-	color : #0554F2;
-	font-family : "arial";
+	color : #0b1b3a;
 	margin-top : 0;
-	margin-bottom : 0;
-	border-top: 2px solid white;
-	border-bottom: 2px solid white;
-	border-radius: 10px;
+	margin-bottom : 4px;
+	font-size: 2rem;
+	font-weight: 700;
 }
 
 h2
 {
-	background-color: #F2F2F2;
-	line-height: 30px;
+	line-height: 24px;
 	text-align: center;
-	color : #012623;
-	font-family : "Arial";
-	font-size: small;
-	font-style: italic;
-	border-top: 2px solid white;
-	border-bottom: 2px solid white;
-	border-radius: 10px;
+	color : #4d5f86;
+	font-size: 0.95rem;
+	font-style: normal;
+	margin: 0;
 }
 
 h3
 {
-	font-family : "Lato";
-	font-variant-caps:all-petite-caps;
-	border-bottom: 1px dashed #9799A6;
+	font-variant-caps: normal;
+	border-bottom: 1px solid rgba(13, 31, 61, 0.08);
 	margin-top: 0px;
-	margin-bottom: 0px;
-    color : #1675F2;
+	margin-bottom: 8px;
+    color : #1f3a8a;
+	font-size: 1.1rem;
 }
 
 h4
@@ -124,19 +158,19 @@ h4
 .resultat, .modifie
 {
 	font-size: 20px;
-	font-weight: bold;
-	color : #0554F2;
-    line-height: 30px
+	font-weight: 700;
+	color : #1f3a8a;
+    line-height: 30px;
 }
 
 h6
 {
-	font-weight: bold;
-	color: #010D26;
+	font-weight: 600;
+	color: #0b1b3a;
 	margin-top: 8px;
 	margin-bottom: 0px;
-	font-size: 1em;
-	line-height: 30px;
+	font-size: 0.95em;
+	line-height: 28px;
 }
 
 #ResultatPartiel1, #ResultatPartiel2, #ResultatTotal
@@ -156,13 +190,13 @@ p
 a
 {
     text-decoration: none;
-    color : #0554F2;
+    color : #1f3a8a;
+    font-weight: 600;
 }
 
 a:hover
 {
     text-decoration: underline;
-    font-size: 1.1em;
 }
 
 .preentete
@@ -177,7 +211,11 @@ footer
 
 input
 {
-	color:blue;
+	color: #1f3a8a;
+	border: 1px solid rgba(11, 27, 58, 0.15);
+	border-radius: 12px;
+	padding: 6px 8px;
+	background-color: #f8faff;
 }
 
 .disclaimer
@@ -210,7 +248,7 @@ input
 	h1
 	{
 		width: 100%;
-		font-size: 1.2em;
+		font-size: 1.6em;
 	}
 
 	h2
@@ -218,7 +256,7 @@ input
 		margin-top : 0px;
 		margin-bottom : 0;
 		border-top : 0;
-		font-size: 0.8em;
+		font-size: 0.9em;
 	}
 
 	#patient
@@ -235,72 +273,18 @@ input
 /*tablettes*/
 @media(min-width : 640px) AND (max-width : 1079px)
 {
-	body
+	.app
 	{
-		width: 90%;
-		margin-left: auto;
-		margin-right : auto;
-	}
-
-	#corps
-	{
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-	}
-
-	#patient
-	{
-		width : 30%;
-		margin-bottom: 8px;
-	}
-
-	.blocproduits
-	{
-		width: 35%;
-		margin-bottom: 8px;
-	}
-
-	.blocmelanges
-	{
-		width: 47.5%;
-		margin-bottom: 8px;
+		padding: 32px 24px 48px;
 	}
 }
 
 /*PC*/
 @media(min-width : 1080px)
 {
-	body
+	.app
 	{
-		width: 900px;
-		margin-left: auto;
-		margin-right : auto;
-	}
-
-	#corps
-	{
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-	}
-
-	#patient
-	{
-		width : 30%;
-		margin-bottom: 8px;
-	}
-
-	.blocproduits
-	{
-		width: 30%;
-		margin-bottom: 8px;
-	}
-
-	.blocmelanges
-	{
-		width: 47.5%;
-		margin-bottom: 8px;
+		padding: 40px 32px 56px;
 	}
 }
 
